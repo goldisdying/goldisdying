@@ -42,8 +42,14 @@
       margin-bottom: 3rem;
     }
 
-    canvas {
-      margin-top: 1rem;
+    .tradingview-widget-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    iframe {
+      border: none;
     }
   </style>
 </head>
@@ -57,11 +63,30 @@
   <div class="section">
     <h2>Gold Priced in Bitcoin</h2>
     <p>How much Bitcoin does it take to buy one ounce of gold?</p>
-    <!-- Embed or load your chart here -->
-    <canvas id="goldBitcoinChart"></canvas>
+
+    <!-- ✅ TradingView Widget -->
+    <div class="tradingview-widget-container">
+      <div id="tradingview_chart"></div>
+    </div>
   </div>
 
-  <!-- Optional: load your chart JS -->
-  <script src="script.js"></script>
+  <!-- ✅ TradingView Script -->
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+    new TradingView.widget({
+      "width": "100%",
+      "height": 600,
+      "symbol": "BITSTAMP:XAUUSD/BTCUSD",
+      "interval": "1D",
+      "timezone": "Etc/UTC",
+      "theme": "dark",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#000000",
+      "enable_publishing": false,
+      "allow_symbol_change": false,
+      "container_id": "tradingview_chart"
+    });
+  </script>
 </body>
 </html>
