@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gold is Dying</title>
+  <title>Gold Is Dying</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="description" content="Gold once ruled as the world's money, but Bitcoin perfects the idea — digitally scarce, instantly transferable, and incorruptible. See gold priced in Bitcoin and witness the shift from metal to math." />
   <style>
@@ -56,20 +56,23 @@
       text-align: center;
     }
 
-    footer a {
-      color: #f5c542;
-      text-decoration: none;
+    footer p {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      line-height: 1.8;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .tradingview-text {
+      color: #f5c542;
+      font-weight: 500;
     }
 
     .footer-logo {
-      height: 28px;
-      vertical-align: middle;
-      margin-left: 6px;
-      margin-bottom: -4px;
+      height: 30px;
+      margin-bottom: -2px; /* aligns baseline with text */
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
@@ -78,19 +81,10 @@
       transform: scale(1.05);
     }
 
-    footer p {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 6px;
-      line-height: 1.8;
-    }
-
     @media (max-width: 600px) {
       .footer-logo {
-        height: 22px;
-        margin-bottom: -2px;
+        height: 24px;
+        margin-bottom: -1px;
       }
     }
   </style>
@@ -128,10 +122,8 @@
   <!-- Footer -->
   <footer>
     <p>
-      Data via 
-      <a href="https://www.tradingview.com" target="_blank">TradingView</a>. 
-      Powered by 
-      <a href="https://fomo21.com" target="_blank">
+      Data via <span class="tradingview-text">TradingView</span>. Powered by 
+      <a href="https://fomo21.com" target="_blank" class="fomo21-link">
         <img src="fomo21-logo.png" alt="FOMO21" class="footer-logo">
       </a>
     </p>
