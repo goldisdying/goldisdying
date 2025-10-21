@@ -7,14 +7,12 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="description" content="Gold once ruled as the world's money, but Bitcoin perfects the idea — digitally scarce, instantly transferable, and incorruptible. See gold priced in Bitcoin and witness the shift from metal to math." />
 
-  <!-- Open Graph / Social Preview -->
+  <!-- Social / Thumbnail -->
   <meta property="og:title" content="Gold is Dying" />
   <meta property="og:description" content="Gold once ruled as the world's money, but Bitcoin perfects the idea — digitally scarce, instantly transferable, and incorruptible. See gold priced in Bitcoin and witness the shift from metal to math." />
   <meta property="og:image" content="https://goldisdying.com/goldisdyingthumbnail.png" />
   <meta property="og:url" content="https://goldisdying.com" />
   <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Gold is Dying" />
   <meta name="twitter:description" content="Gold once ruled as the world's money, but Bitcoin perfects the idea — digitally scarce, instantly transferable, and incorruptible." />
@@ -92,7 +90,7 @@
     </p>
   </header>
 
-  <!-- CHART 1: Gold priced in Bitcoin (TradingView) -->
+  <!-- CHART 1: Gold priced in Bitcoin -->
   <h2>Gold Priced in Bitcoin (Live Price Chart)</h2>
   <p>How much Bitcoin does it take to buy one ounce of gold?</p>
   <iframe
@@ -102,7 +100,7 @@
     frameborder="0">
   </iframe>
 
-  <!-- CHART 2: Bitcoin priced in Gold (Lightweight Chart with 2 decimals) -->
+  <!-- CHART 2: Bitcoin priced in Gold -->
   <h2>Bitcoin Priced in Gold Ounces</h2>
   <p>How many ounces of gold can one Bitcoin buy?</p>
   <div id="btcGoldChart"></div>
@@ -120,47 +118,44 @@
   <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
   <script>
     const chart = LightweightCharts.createChart(document.getElementById('btcGoldChart'), {
-      layout: {
-        backgroundColor: '#000000',
-        textColor: '#cccccc',
-      },
-      rightPriceScale: {
-        borderColor: '#333',
-      },
-      timeScale: {
-        borderColor: '#333',
-      },
-      grid: {
-        vertLines: { color: '#1a1a1a' },
-        horzLines: { color: '#1a1a1a' },
-      },
-      crosshair: {
-        mode: LightweightCharts.CrosshairMode.Normal,
-      },
+      layout: { backgroundColor: '#000000', textColor: '#cccccc' },
+      rightPriceScale: { borderColor: '#333' },
+      timeScale: { borderColor: '#333' },
+      grid: { vertLines: { color: '#1a1a1a' }, horzLines: { color: '#1a1a1a' } },
     });
 
-    const lineSeries = chart.addLineSeries({
-      color: '#f5c542',
-      lineWidth: 2,
-    });
+    const lineSeries = chart.addLineSeries({ color: '#f5c542', lineWidth: 2 });
 
-    // Fetch BTC in XAU over time using CoinGecko
-    fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=xau&days=1825')
-      .then(res => res.json())
-      .then(data => {
-        const prices = data.prices.map(p => ({
-          time: Math.floor(p[0] / 1000),
-          value: p[1],
-        }));
+    async function loadBTCinGold() {
+      try {
+        const btcRes = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1825');
+        const goldRes = await fetch('https://api.coingecko.com/api/v3/coins/tether-gold/market_chart?vs_currency=usd&days=1825');
+        const btcData = await btcRes.json();
+        const goldData = await goldRes.json();
+
+        // Align both data series by timestamp and calculate BTC/Gold ratio
+        const goldMap = new Map(goldData.prices.map(([t, v]) => [Math.floor(t / 1000), v]));
+        const prices = btcData.prices
+          .map(([t, v]) => {
+            const ts = Math.floor(t / 1000);
+            const goldPrice = goldMap.get(ts);
+            return goldPrice ? { time: ts, value: v / goldPrice } : null;
+          })
+          .filter(p => p);
+
         lineSeries.setData(prices);
-      })
-      .catch(err => console.error('Error fetching data:', err));
 
-    chart.applyOptions({
-      localization: {
-        priceFormatter: price => price.toFixed(2), // <-- Show exactly two decimal places
-      },
-    });
+        chart.applyOptions({
+          localization: {
+            priceFormatter: price => price.toFixed(2), // <-- show two decimals
+          },
+        });
+      } catch (err) {
+        console.error('Error loading BTC/gold data:', err);
+      }
+    }
+
+    loadBTCinGold();
   </script>
 </body>
 </html>
