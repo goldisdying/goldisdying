@@ -6,6 +6,20 @@
   <title>Gold is Dying</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="description" content="Gold once ruled as the world's money, but Bitcoin perfects the idea — digitally scarce, instantly transferable, and incorruptible. See gold priced in Bitcoin and witness the shift from metal to math." />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="Gold is Dying" />
+  <meta property="og:description" content="Gold once ruled as the world's money, but Bitcoin perfects the idea — digitally scarce, instantly transferable, and incorruptible. See gold priced in Bitcoin and witness the shift from metal to math." />
+  <meta property="og:image" content="https://goldisdying.com/goldisdyingthumbnail.png" />
+  <meta property="og:url" content="https://goldisdying.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gold is Dying" />
+  <meta name="twitter:description" content="Gold once ruled as the world's money, but Bitcoin perfects the idea — digitally scarce, instantly transferable, and incorruptible." />
+  <meta name="twitter:image" content="https://goldisdying.com/goldisdyingthumbnail.png" />
+
   <style>
     body {
       background-color: #000;
@@ -15,23 +29,19 @@
       margin: 0;
       padding: 0;
     }
-
     header {
       padding: 60px 20px 10px;
     }
-
     h1 {
       font-size: 3rem;
       color: #f5c542;
       margin-bottom: 10px;
     }
-
     h2 {
       font-size: 1.8rem;
       color: #f5c542;
       margin: 40px 0 10px;
     }
-
     p {
       color: #ccc;
       font-size: 1.1rem;
@@ -39,7 +49,6 @@
       max-width: 700px;
       line-height: 1.6;
     }
-
     iframe {
       border: none;
       width: 90%;
@@ -47,40 +56,23 @@
       border-radius: 8px;
       max-width: 1000px;
     }
-
     footer {
-      color: #ccc;
-      font-size: 1rem;
+      color: #999;
+      font-size: 0.9rem;
       margin-top: 60px;
       margin-bottom: 40px;
-      text-align: center;
     }
-
-    footer p {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      line-height: 1.8;
+    footer img {
+      height: 26px;
+      vertical-align: -6px;
+      margin-left: 5px;
     }
-
-    .footer-logo {
-      height: 30px;
-      margin-bottom: -2px; /* aligns baseline with text */
-      transition: transform 0.2s ease, opacity 0.2s ease;
+    a {
+      color: #f5c542;
+      text-decoration: none;
     }
-
-    .footer-logo:hover {
-      opacity: 0.85;
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 600px) {
-      .footer-logo {
-        height: 24px;
-        margin-bottom: -1px;
-      }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -114,12 +106,11 @@
     frameborder="0">
   </iframe>
 
-  <!-- Footer -->
   <footer>
     <p>
-      Data via TradingView. Powered by 
-      <a href="https://fomo21.com" target="_blank" class="fomo21-link">
-        <img src="fomo21-logo.png" alt="FOMO21" class="footer-logo">
+      Data via TradingView. Powered by
+      <a href="https://fomo21.com" target="_blank">
+        <img src="fomo21-logo.png" alt="FOMO21 Logo" />
       </a>
     </p>
   </footer>
