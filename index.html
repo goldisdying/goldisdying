@@ -74,6 +74,13 @@
     a:hover {
       text-decoration: underline;
     }
+    #btcGoldChart {
+      width: 90%;
+      max-width: 1000px;
+      height: 600px;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
   </style>
 </head>
 
@@ -85,7 +92,7 @@
     </p>
   </header>
 
-  <!-- CHART 1: Gold priced in Bitcoin (Live Price Chart) -->
+  <!-- CHART 1: Gold priced in Bitcoin (TradingView) -->
   <h2>Gold Priced in Bitcoin (Live Price Chart)</h2>
   <p>How much Bitcoin does it take to buy one ounce of gold?</p>
   <iframe
@@ -95,15 +102,10 @@
     frameborder="0">
   </iframe>
 
-  <!-- CHART 2: Bitcoin priced in Gold -->
+  <!-- CHART 2: Bitcoin priced in Gold (Lightweight Chart with 2 decimals) -->
   <h2>Bitcoin Priced in Gold Ounces</h2>
   <p>How many ounces of gold can one Bitcoin buy?</p>
-  <iframe
-    src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_btcoxau&symbol=(BITSTAMP%3ABTCUSD%2FOANDA%3AXAUUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC"
-    allowtransparency="true"
-    scrolling="no"
-    frameborder="0">
-  </iframe>
+  <div id="btcGoldChart"></div>
 
   <footer>
     <p>
@@ -113,5 +115,52 @@
       </a>
     </p>
   </footer>
+
+  <!-- Lightweight Charts Library -->
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <script>
+    const chart = LightweightCharts.createChart(document.getElementById('btcGoldChart'), {
+      layout: {
+        backgroundColor: '#000000',
+        textColor: '#cccccc',
+      },
+      rightPriceScale: {
+        borderColor: '#333',
+      },
+      timeScale: {
+        borderColor: '#333',
+      },
+      grid: {
+        vertLines: { color: '#1a1a1a' },
+        horzLines: { color: '#1a1a1a' },
+      },
+      crosshair: {
+        mode: LightweightCharts.CrosshairMode.Normal,
+      },
+    });
+
+    const lineSeries = chart.addLineSeries({
+      color: '#f5c542',
+      lineWidth: 2,
+    });
+
+    // Fetch BTC in XAU over time using CoinGecko
+    fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=xau&days=1825')
+      .then(res => res.json())
+      .then(data => {
+        const prices = data.prices.map(p => ({
+          time: Math.floor(p[0] / 1000),
+          value: p[1],
+        }));
+        lineSeries.setData(prices);
+      })
+      .catch(err => console.error('Error fetching data:', err));
+
+    chart.applyOptions({
+      localization: {
+        priceFormatter: price => price.toFixed(2), // <-- Show exactly two decimal places
+      },
+    });
+  </script>
 </body>
 </html>
