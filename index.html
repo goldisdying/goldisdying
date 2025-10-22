@@ -23,6 +23,9 @@
   <meta name="twitter:image" content="https://goldisdying.com/goldisdyingthumbnail.png" />
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       background-color: #000;
       color: #f5c542;
@@ -31,17 +34,14 @@
       margin: 0;
       padding: 0;
     }
-
     header {
-      padding: 60px 20px 10px;
+      padding: 60px 20px 20px;
     }
-
     h1 {
       font-size: 3rem;
       color: #f5c542;
       margin-bottom: 10px;
     }
-
     h2 {
       font-size: 1.8rem;
       color: #f5c542;
@@ -49,14 +49,12 @@
       line-height: 1.3;
       font-weight: 700;
     }
-
     h2 span {
       display: block;
       font-size: 1.8rem;
       color: #f5c542;
       font-weight: 700;
     }
-
     p {
       color: #ccc;
       font-size: 1.1rem;
@@ -65,6 +63,31 @@
       line-height: 1.6;
     }
 
+    /* Buttons */
+    .button-container {
+      margin: 30px 0 60px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .scroll-btn {
+      background-color: #f5c542;
+      color: #000;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .scroll-btn:hover {
+      background-color: #ffd84a;
+      transform: translateY(-2px);
+    }
+
+    /* Chart containers */
     .chart-container {
       position: relative;
       display: inline-block;
@@ -72,14 +95,12 @@
       max-width: 1000px;
       margin-bottom: 40px;
     }
-
     iframe {
       border: none;
       width: 100%;
       height: 600px;
       border-radius: 8px;
     }
-
     .chart-overlay {
       position: absolute;
       top: 14px;
@@ -92,24 +113,59 @@
       pointer-events: none;
     }
 
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      text-align: left;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    section h2 {
+      text-align: center;
+    }
+    .qa {
+      margin-bottom: 25px;
+    }
+    .qa strong {
+      display: block;
+      color: #f5c542;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .qa p {
+      color: #ccc;
+      margin: 0;
+    }
+
+    /* Evidence links */
+    .evidence-links a {
+      display: block;
+      color: #ccc;
+      font-size: 1.1rem;
+      margin: 10px 0;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .evidence-links a:hover {
+      color: #f5c542;
+      text-decoration: underline;
+    }
+
     footer {
       color: #999;
       font-size: 0.9rem;
       margin-top: 60px;
       margin-bottom: 40px;
     }
-
     footer img {
       height: 26px;
       vertical-align: -6px;
       margin-left: 5px;
     }
-
     a {
       color: #f5c542;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
@@ -124,6 +180,15 @@
       Bitcoin perfects this concept for the digital age with its fixed supply, borderless nature,
       divisibility, and verifiability.
     </p>
+
+    <div class="button-container">
+      <button class="scroll-btn" title="Why Bitcoin Beats Gold" onclick="document.getElementById('why-bitcoin-beats-gold').scrollIntoView({behavior:'smooth'})">
+        Why Bitcoin Beats Gold
+      </button>
+      <button class="scroll-btn" title="Read analyses that show why gold can’t compete." onclick="document.getElementById('explore-evidence').scrollIntoView({behavior:'smooth'})">
+        Explore the Evidence
+      </button>
+    </div>
   </header>
 
   <!-- CHART 1: Gold priced in Bitcoin -->
@@ -155,6 +220,85 @@
       frameborder="0">
     </iframe>
   </div>
+
+  <!-- WHY BITCOIN BEATS GOLD SECTION -->
+  <section id="why-bitcoin-beats-gold">
+    <h2>Why Bitcoin Beats Gold</h2>
+
+    <div class="qa">
+      <strong>1. Why is Bitcoin called “digital gold”?</strong>
+      <p>Because it shares gold’s scarcity and durability, but improves on it. Bitcoin’s supply is fixed at 21 million and can be verified instantly, while gold supply is uncertain and requires trust in miners and refiners.</p>
+    </div>
+
+    <div class="qa">
+      <strong>2. Which is easier to store securely?</strong>
+      <p>Bitcoin. You can store billions of dollars on a hardware wallet the size of a thumb drive. Gold requires vaults, guards, and insurance.</p>
+    </div>
+
+    <div class="qa">
+      <strong>3. Which is easier to transport?</strong>
+      <p>Bitcoin. You can move any amount of Bitcoin across the world in minutes for a few dollars. Moving gold means armored trucks, customs forms, and huge costs.</p>
+    </div>
+
+    <div class="qa">
+      <strong>4. Which is more divisible?</strong>
+      <p>Bitcoin. It can be divided into 100 million satoshis per coin. Gold can be cut, but not easily or precisely, and small pieces are impractical.</p>
+    </div>
+
+    <div class="qa">
+      <strong>5. Which has a fixed supply?</strong>
+      <p>Bitcoin. The code guarantees a hard cap of 21 million coins. Gold supply keeps growing every year as new deposits are mined.</p>
+    </div>
+
+    <div class="qa">
+      <strong>6. Which is easier to verify?</strong>
+      <p>Bitcoin. You can audit the entire supply yourself using open-source software. Verifying gold’s purity requires experts and expensive testing equipment.</p>
+    </div>
+
+    <div class="qa">
+      <strong>7. Which performs better in the digital age?</strong>
+      <p>Bitcoin. It works natively on the internet and can be sent instantly anywhere. Gold is a physical metal built for a pre-digital economy.</p>
+    </div>
+
+    <div class="qa">
+      <strong>8. Which protects you from government seizure better?</strong>
+      <p>Bitcoin. If held in self-custody, no government can confiscate it without your private keys. Gold has been seized before, including in 1933 in the United States.</p>
+    </div>
+
+    <div class="qa">
+      <strong>9. Which has a predictable issuance schedule?</strong>
+      <p>Bitcoin. New coins are released every ten minutes on a known schedule that halves every four years. Gold mining fluctuates with market prices and new discoveries.</p>
+    </div>
+
+    <div class="qa">
+      <strong>10. Which is harder to counterfeit?</strong>
+      <p>Bitcoin. It’s backed by cryptographic proof that cannot be faked. Gold can be counterfeited or filled with tungsten and requires testing to confirm authenticity.</p>
+    </div>
+
+    <div class="qa">
+      <strong>11. Which is more scarce per person?</strong>
+      <p>Bitcoin. There will only ever be 21 million coins, meaning fewer than one for every 400 people on earth. Gold supply continues to expand every year.</p>
+    </div>
+
+    <div class="qa">
+      <strong>12. Which adapts better to the modern financial system?</strong>
+      <p>Bitcoin. It integrates directly with digital wallets, payment apps, and programmable contracts. Gold sits in vaults collecting dust.</p>
+    </div>
+  </section>
+
+  <!-- EXPLORE THE EVIDENCE SECTION -->
+  <section id="explore-evidence">
+    <h2>Explore the Evidence</h2>
+    <p style="text-align:center; color:#ccc; max-width:700px; margin:0 auto 40px;">
+      Dive into essays and research that expose gold’s flaws and highlight Bitcoin’s superiority.
+    </p>
+
+    <div class="evidence-links" style="text-align:center;">
+      <a href="https://unchained.com/blog/bitcoin-obsoletes-all-other-money/" target="_blank">
+        Bitcoin Obsoletes All Other Money – Parker Lewis
+      </a>
+    </div>
+  </section>
 
   <footer>
     <p>
