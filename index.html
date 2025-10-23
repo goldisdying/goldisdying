@@ -7,80 +7,86 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
   <!-- SEO -->
-  <meta name="description" content="For centuries, gold was trusted as the foundation of money, but it had many flaws. Bitcoin perfects this concept for the digital age with its fixed supply, borderless nature, divisibility, and verifiability. See gold priced in Bitcoin and Bitcoin priced in gold ounces — the shift from metal to math is undeniable." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Gold is Dying" />
-  <meta property="og:description" content="Gold had flaws. Bitcoin fixes them. See gold priced in Bitcoin and Bitcoin priced in gold ounces — the shift from metal to math is undeniable." />
-  <meta property="og:image" content="https://goldisdying.com/goldisdyingthumbnail.png" />
-  <meta property="og:url" content="https://goldisdying.com" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Gold is Dying" />
-  <meta name="twitter:description" content="Gold had flaws. Bitcoin fixes them. See gold priced in Bitcoin and Bitcoin priced in gold ounces — the shift from metal to math is undeniable." />
-  <meta name="twitter:image" content="https://goldisdying.com/goldisdyingthumbnail.png" />
+  <meta name="description" content="For centuries, gold was trusted as the foundation of money, but it had many flaws. Bitcoin perfects this concept for the digital age with its fixed supply, borderless nature, divisibility, and verifiability." />
 
   <style>
     html { scroll-behavior: smooth; }
     body {
       background-color: #000;
       color: #f5c542;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
-      text-align: center;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       margin: 0;
       padding: 0;
-    }
-    header { padding: 60px 20px 0; }
-    h1 { font-size: 3rem; color: #f5c542; margin-bottom: 10px; }
-    h2 {
-      font-size: 1.8rem;
-      color: #f5c542;
-      margin: 40px 0 10px;
-      font-weight: 700;
-    }
-    p {
-      color: #ccc;
-      font-size: 1.1rem;
-      margin: 0 auto 30px;
-      max-width: 700px;
-      line-height: 1.6;
+      text-align: center;
+      overflow-x: hidden;
     }
 
-    /* Buttons */
+    /* FADE-IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HEADER */
+    header {
+      padding: 60px 20px 20px;
+    }
+    h1 {
+      font-size: 3.5rem;
+      color: #f5c542;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #cfcfcf;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin: 0 auto 40px;
+      max-width: 850px;
+    }
+
+    /* BUTTONS */
     .button-container {
-      margin: 25px 0 30px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 35px;
+      margin: 40px 0 60px;
     }
     .scroll-btn {
       background-color: #f5c542;
       color: #000;
-      font-weight: 700;
-      font-size: 1.1rem;
-      padding: 14px 26px;
+      font-weight: 800;
+      font-size: 1.3rem;
+      padding: 26px 42px;
       border: none;
-      border-radius: 30px;
+      border-radius: 80px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(255, 213, 0, 0.25);
     }
-    .scroll-btn:hover { background-color: #ffd84a; transform: translateY(-2px); }
+    .scroll-btn:hover {
+      background-color: #ffd84a;
+      transform: translateY(-2px);
+    }
 
-    /* Charts */
+    /* CHARTS */
     .chart-container {
       position: relative;
-      display: inline-block;
       width: 90%;
       max-width: 1000px;
-      margin-bottom: 30px;
+      margin: 0 auto 40px;
     }
     iframe {
-      border: none;
       width: 100%;
       height: 600px;
+      border: none;
       border-radius: 8px;
     }
     .chart-overlay {
@@ -90,160 +96,160 @@
       color: rgba(255, 215, 0, 0.85);
       font-size: 1.4rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
       pointer-events: none;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     }
 
-    /* Sections */
+    /* SECTIONS */
     section {
-      padding: 40px 20px 30px;
-      text-align: left;
+      padding: 60px 20px;
       max-width: 900px;
       margin: 0 auto;
+      text-align: left;
     }
-    section h2 { text-align: center; }
-    .qa { margin-bottom: 25px; }
-    .qa strong { display: block; color: #f5c542; margin-bottom: 8px; font-weight: 700; font-size: 1.1rem; }
-    .qa p { color: #ccc; margin: 0 0 10px; }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #f5c542;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
 
-    /* Table */
+    .qa { margin-bottom: 25px; }
+    .qa strong { color: #f5c542; display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.15rem; }
+    .qa p { color: #ccc; font-size: 1.1rem; line-height: 1.6; }
+
+    /* TABLE */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 15px 0 10px;
-      font-size: 0.95rem;
+      margin: 20px 0 10px;
+      font-size: 1rem;
     }
     th, td {
       border: 1px solid #333;
-      padding: 10px 8px;
+      padding: 12px;
       text-align: center;
     }
     th {
       background-color: #1a1a1a;
       color: #f5c542;
-      font-weight: 600;
     }
-    td { color: #ccc; background-color: #111; }
+    td {
+      color: #ccc;
+      background-color: #111;
+    }
     tr:nth-child(even) td { background-color: #151515; }
-    tr.highlight td { background-color: #2a2100; transition: background-color 0.5s ease; }
+    tr.highlight td { background-color: #2a2100; }
 
-    /* Evidence links */
+    /* LINKS */
     .evidence-links a {
       display: inline-block;
       color: #f5c542;
       font-size: 1.1rem;
-      font-weight: 500;
-      margin: 10px 0;
+      margin: 8px 0;
       text-decoration: none;
-      transition: color 0.2s ease, text-shadow 0.2s ease;
     }
-    .evidence-links a::after { content: " ↗"; font-size: 1rem; color: #f5c542; opacity: 0.8; }
     .evidence-links a:hover { color: #ffd84a; text-shadow: 0 0 6px rgba(255, 216, 74, 0.5); }
 
     footer {
+      text-align: center;
       color: #999;
       font-size: 0.9rem;
-      margin-top: 40px;
-      margin-bottom: 40px;
+      padding: 40px 0;
     }
     footer img { height: 26px; vertical-align: -6px; margin-left: 5px; }
-    a { color: #f5c542; text-decoration: none; }
-    a:hover { text-decoration: underline; }
   </style>
 </head>
 
 <body>
+  <!-- HERO -->
   <header>
     <h1>Gold is Dying</h1>
     <p>
       For centuries, gold was trusted as the foundation of money, but it had many flaws.
-      Bitcoin perfects this concept for the digital age with its fixed supply, borderless nature,
-      divisibility, and verifiability.
+      Bitcoin perfects this concept for the digital age with its fixed supply,
+      borderless nature, divisibility, and verifiability.
     </p>
 
     <div class="button-container">
+      <button class="scroll-btn" onclick="document.getElementById('is-gold-dying').scrollIntoView({behavior:'smooth'})">
+        Wait, Is Gold Really Dying?
+      </button>
       <button class="scroll-btn" onclick="document.getElementById('why-bitcoin-beats-gold').scrollIntoView({behavior:'smooth'})">
         Why Bitcoin Beats Gold
       </button>
       <button class="scroll-btn" onclick="document.getElementById('explore-evidence').scrollIntoView({behavior:'smooth'})">
-        Explore the Evidence
+        Explore More Research
       </button>
     </div>
   </header>
 
-  <!-- Chart 1 -->
-  <h2>Gold Priced in Bitcoin<br><span>(Live Price Chart)</span></h2>
-  <p>How much Bitcoin does it take to buy one ounce of gold?</p>
-  <div class="chart-container">
-    <div class="chart-overlay">goldisdying.com</div>
-    <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_goldbtc&symbol=(OANDA%3AXAUUSD%2FBITSTAMP%3ABTCUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC" allowtransparency="true" scrolling="no"></iframe>
-  </div>
+  <!-- SECTION 1 -->
+  <section id="is-gold-dying" class="fade-in">
+    <h2>Is Gold Really Dying?</h2>
+    <p>Yes — in Bitcoin terms, gold has been collapsing for more than a decade.</p>
+    <p>Measured against Bitcoin, an ounce of gold has lost nearly all its value:</p>
 
-  <!-- Chart 2 -->
-  <h2>Bitcoin Priced in Gold Ounces<br><span>(Live Price Chart)</span></h2>
-  <p>How many ounces of gold can one Bitcoin buy?</p>
-  <div class="chart-container">
-    <div class="chart-overlay">goldisdying.com</div>
-    <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_btcoxau&symbol=(BITSTAMP%3ABTCUSD%2FOANDA%3AXAUUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC" allowtransparency="true" scrolling="no"></iframe>
-  </div>
+    <table id="goldTable">
+      <tr>
+        <th>Period</th>
+        <th>Gold Price (USD/oz)</th>
+        <th>Bitcoin Price (USD)</th>
+        <th>Gold Value in BTC</th>
+        <th>% Drop vs. Today</th>
+      </tr>
+      <tr><td>Dec 31 2010</td><td>$1,421</td><td>$0.30</td><td>≈ 4,738 BTC</td><td id="drop-2010">—</td></tr>
+      <tr><td>Dec 31 2015</td><td>$1,061</td><td>$430</td><td>≈ 2.46 BTC</td><td id="drop-2015">—</td></tr>
+      <tr><td>Dec 31 2020</td><td>$1,894</td><td>$29,002</td><td>≈ 0.065 BTC</td><td id="drop-2020">—</td></tr>
+      <tr class="highlight"><td><strong>Today</strong></td><td id="live-gold-usd">Loading...</td><td id="live-btc-usd">Loading...</td><td id="live-gold-btc">Loading...</td><td>—</td></tr>
+    </table>
 
-  <!-- WHY BITCOIN BEATS GOLD -->
-  <section id="why-bitcoin-beats-gold">
-    <h2>Why Bitcoin Beats Gold</h2>
+    <p>Despite gold more than doubling in dollar terms since 2010, its value relative to Bitcoin has effectively gone to zero.</p>
+    <p>In 2010, one ounce of gold could buy over 4,700 BTC. Today, it buys less than 0.04 BTC — a collapse of over 99.999%.</p>
+    <p><strong>Gold may still shine in dollars, but in Bitcoin terms, it’s already dead.</strong></p>
 
-    <!-- New Question -->
-    <div class="qa">
-      <strong>1. Is gold really dying?</strong>
-      <p>Yes — in Bitcoin terms, gold has been collapsing for more than a decade.</p>
-      <p>Measured against Bitcoin, an ounce of gold has lost nearly all its value:</p>
-
-      <table id="goldTable">
-        <tr>
-          <th>Period</th><th>Gold Price (USD/oz)</th><th>Bitcoin Price (USD)</th><th>Gold Value in BTC</th><th>% Drop vs. Today</th>
-        </tr>
-        <tr><td>Dec 31 2010</td><td>$1,421</td><td>$0.30</td><td>≈ 4,738 BTC</td><td id="drop-2010">—</td></tr>
-        <tr><td>Dec 31 2015</td><td>$1,061</td><td>$430</td><td>≈ 2.46 BTC</td><td id="drop-2015">—</td></tr>
-        <tr><td>Dec 31 2020</td><td>$1,894</td><td>$29,002</td><td>≈ 0.065 BTC</td><td id="drop-2020">—</td></tr>
-        <tr class="highlight"><td><strong>Today</strong></td><td id="live-gold-usd">Loading...</td><td id="live-btc-usd">Loading...</td><td id="live-gold-btc">Loading...</td><td>—</td></tr>
-      </table>
-
-      <p>Despite gold more than doubling in dollar terms since 2010, its value relative to Bitcoin has effectively gone to zero.</p>
-      <p>In 2010, one ounce of gold could buy over 4,700 BTC. Today, it buys less than 0.04 BTC — a collapse of over 99.999%.</p>
-      <p><strong>Gold may still shine in dollars, but in Bitcoin terms, it’s already dead.</strong></p>
+    <h3 style="text-align:center; margin-top:50px;">Gold Priced in Bitcoin (Live Chart)</h3>
+    <div class="chart-container">
+      <div class="chart-overlay">goldisdying.com</div>
+      <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_goldbtc&symbol=(OANDA%3AXAUUSD%2FBITSTAMP%3ABTCUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC" allowtransparency="true" scrolling="no"></iframe>
     </div>
-
-    <!-- Original Questions Shifted -->
-    <div class="qa"><strong>2. Why is Bitcoin called “digital gold”?</strong><p>Because it shares gold’s scarcity and durability, but improves on it. Bitcoin’s supply is fixed at 21 million and can be verified instantly, while gold supply is uncertain and requires trust in miners and refiners.</p></div>
-    <div class="qa"><strong>3. Which is easier to store securely?</strong><p>Bitcoin. You can store billions of dollars on a hardware wallet the size of a thumb drive. Gold requires vaults, guards, and insurance.</p></div>
-    <div class="qa"><strong>4. Which is easier to transport?</strong><p>Bitcoin. You can move any amount of Bitcoin across the world in minutes for a few dollars. Moving gold means armored trucks, customs forms, and huge costs.</p></div>
-    <div class="qa"><strong>5. Which is more divisible?</strong><p>Bitcoin. It can be divided into 100 million satoshis per coin. Gold can be cut, but not easily or precisely, and small pieces are impractical.</p></div>
-    <div class="qa"><strong>6. Which has a fixed supply?</strong><p>Bitcoin. The code guarantees a hard cap of 21 million coins. Gold supply keeps growing every year as new deposits are mined.</p></div>
-    <div class="qa"><strong>7. Which is easier to verify?</strong><p>Bitcoin. You can audit the entire supply yourself using open-source software. Verifying gold’s purity requires experts and expensive testing equipment.</p></div>
-    <div class="qa"><strong>8. Which performs better in the digital age?</strong><p>Bitcoin. It works natively on the internet and can be sent instantly anywhere. Gold is a physical metal built for a pre-digital economy.</p></div>
-    <div class="qa"><strong>9. Which protects you from government seizure better?</strong><p>Bitcoin. If held in self-custody, no government can confiscate it without your private keys. Gold has been seized before, including in 1933 in the United States.</p></div>
-    <div class="qa"><strong>10. Which has a predictable issuance schedule?</strong><p>Bitcoin. New coins are released every ten minutes on a known schedule that halves every four years. Gold mining fluctuates with market prices and new discoveries.</p></div>
-    <div class="qa"><strong>11. Which is harder to counterfeit?</strong><p>Bitcoin. It’s backed by cryptographic proof that cannot be faked. Gold can be counterfeited or filled with tungsten and requires testing to confirm authenticity.</p></div>
-    <div class="qa"><strong>12. Which is more scarce per person?</strong><p>Bitcoin. There will only ever be 21 million coins, meaning fewer than one for every 400 people on earth. Gold supply continues to expand every year.</p></div>
-    <div class="qa"><strong>13. Which adapts better to the modern financial system?</strong><p>Bitcoin. It integrates directly with digital wallets, payment apps, and programmable contracts. Gold sits in vaults collecting dust.</p></div>
   </section>
 
-  <!-- EXPLORE THE EVIDENCE -->
-  <section id="explore-evidence">
-    <h2>Explore the Evidence</h2>
+  <!-- SECTION 2 -->
+  <section id="why-bitcoin-beats-gold" class="fade-in">
+    <h2>Why Bitcoin Beats Gold</h2>
+
+    <div class="qa"><strong>1. Why is Bitcoin called “digital gold”?</strong><p>Because it shares gold’s scarcity and durability, but improves on it. Bitcoin’s supply is fixed at 21 million and can be verified instantly, while gold supply is uncertain and requires trust in miners and refiners.</p></div>
+    <div class="qa"><strong>2. Which is easier to store securely?</strong><p>Bitcoin. You can store billions of dollars on a hardware wallet the size of a thumb drive. Gold requires vaults, guards, and insurance.</p></div>
+    <div class="qa"><strong>3. Which is easier to transport?</strong><p>Bitcoin. You can move any amount of Bitcoin across the world in minutes for a few dollars. Moving gold means armored trucks, customs forms, and huge costs.</p></div>
+    <div class="qa"><strong>4. Which is more divisible?</strong><p>Bitcoin. It can be divided into 100 million satoshis per coin. Gold can be cut, but not easily or precisely, and small pieces are impractical.</p></div>
+    <div class="qa"><strong>5. Which has a fixed supply?</strong><p>Bitcoin. The code guarantees a hard cap of 21 million coins. Gold supply keeps growing every year as new deposits are mined.</p></div>
+    <div class="qa"><strong>6. Which is easier to verify?</strong><p>Bitcoin. You can audit the entire supply yourself using open-source software. Verifying gold’s purity requires experts and expensive testing equipment.</p></div>
+    <div class="qa"><strong>7. Which performs better in the digital age?</strong><p>Bitcoin. It works natively on the internet and can be sent instantly anywhere. Gold is a physical metal built for a pre-digital economy.</p></div>
+    <div class="qa"><strong>8. Which protects you from government seizure better?</strong><p>Bitcoin. If held in self-custody, no government can confiscate it without your private keys. Gold has been seized before, including in 1933 in the United States.</p></div>
+    <div class="qa"><strong>9. Which has a predictable issuance schedule?</strong><p>Bitcoin. New coins are released every ten minutes on a known schedule that halves every four years. Gold mining fluctuates with market prices and new discoveries.</p></div>
+    <div class="qa"><strong>10. Which is harder to counterfeit?</strong><p>Bitcoin. It’s backed by cryptographic proof that cannot be faked. Gold can be counterfeited or filled with tungsten and requires testing to confirm authenticity.</p></div>
+    <div class="qa"><strong>11. Which is more scarce per person?</strong><p>Bitcoin. There will only ever be 21 million coins, meaning fewer than one for every 400 people on earth. Gold supply continues to expand every year.</p></div>
+    <div class="qa"><strong>12. Which adapts better to the modern financial system?</strong><p>Bitcoin. It integrates directly with digital wallets, payment apps, and programmable contracts. Gold sits in vaults collecting dust.</p></div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="explore-evidence" class="fade-in">
+    <h2>Explore More Research</h2>
     <p style="text-align:center; color:#ccc; max-width:700px; margin:0 auto 40px;">
       Dive into essays and research that expose gold’s flaws and highlight Bitcoin’s superiority.
     </p>
     <div class="evidence-links" style="text-align:center;">
-      <a href="https://unchained.com/blog/bitcoin-obsoletes-all-other-money/" target="_blank">Bitcoin Obsoletes All Other Money (Read time: 12–15 minutes) – Parker Lewis</a><br>
-      <a href="https://vijayboyapati.medium.com/the-bullish-case-for-bitcoin-6ecc8bdecc1" target="_blank">The Bullish Case for Bitcoin (Read time: 41 minutes) – Vijay Boyapati</a><br>
-      <a href="https://medium.com/the-bitcoin-times/the-greatest-game-b787ac3242b2" target="_blank">The Greatest Game (Read time: 23 minutes) – Jeff Booth</a><br>
+      <a href="https://unchained.com/blog/bitcoin-obsoletes-all-other-money/" target="_blank">Bitcoin Obsoletes All Other Money – Parker Lewis</a><br>
+      <a href="https://vijayboyapati.medium.com/the-bullish-case-for-bitcoin-6ecc8bdecc1" target="_blank">The Bullish Case for Bitcoin – Vijay Boyapati</a><br>
+      <a href="https://medium.com/the-bitcoin-times/the-greatest-game-b787ac3242b2" target="_blank">The Greatest Game – Jeff Booth</a><br>
       <a href="https://www.youtube.com/watch?v=4rvTppy1qLI&list=PL2jAZ0x9H0bQFY6wIbQfnrnIlqMcSHd6X&index=1" target="_blank">What is Money? – The Saylor Series – Robert Breedlove & Michael Saylor</a>
     </div>
   </section>
 
   <footer>
-    <p>Powered by <a href="https://fomo21.com" target="_blank"><img src="fomo21-logo.png" alt="FOMO21 Logo" /></a></p>
+    <p>Powered by <a href="https://fomo21.com" target="_blank"><img src="fomo21-logo.png" alt="FOMO21" /></a></p>
   </footer>
 
   <script>
@@ -265,16 +271,21 @@
           const id = ["drop-2010", "drop-2015", "drop-2020"][i];
           document.getElementById(id).innerText = `-${drop.toFixed(4)}%`;
         });
-
-        const todayRow = document.querySelector(".highlight");
-        todayRow.classList.add("flash");
-        setTimeout(() => todayRow.classList.remove("flash"), 500);
       } catch (err) {
         console.error("Error fetching prices:", err);
       }
     }
     updateGoldVsBTC();
     setInterval(updateGoldVsBTC, 60000);
+
+    // Fade-in logic
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
