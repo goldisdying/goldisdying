@@ -136,7 +136,7 @@
     tr:nth-child(even) td { background-color: #151515; }
     tr.highlight td { background-color: #2a2100; }
 
-    /* Watermark */
+    /* Table watermark */
     .table-watermark {
       position: absolute;
       bottom: 10px;
@@ -216,4 +216,105 @@
     </div>
 
     <p>Despite gold more than doubling in dollar terms since 2010, its value relative to Bitcoin has effectively gone to zero.</p>
-    <p>In 2010, one ounce of gold
+    <p>In 2010, one ounce of gold could buy over 4,700 BTC. Today, it buys less than 0.04 BTC — a collapse of over 99.999%.</p>
+    <p><strong>Gold may still shine in dollars, but in Bitcoin terms, it’s already dead.</strong></p>
+
+    <h3 style="text-align:center; margin-top:40px;">Gold Priced in Bitcoin (Live Chart)</h3>
+    <div class="chart-container">
+      <div class="chart-overlay">goldisdying.com</div>
+      <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_goldbtc&symbol=(OANDA%3AXAUUSD%2FBITSTAMP%3ABTCUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC" allowtransparency="true" scrolling="no"></iframe>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="why-bitcoin-beats-gold" class="fade-in">
+    <h2>Why Bitcoin Beats Gold</h2>
+    <div class="qa"><strong>1. Why is Bitcoin called “digital gold”?</strong><p>Because it shares gold’s scarcity and durability, but improves on it. Bitcoin’s supply is fixed at 21 million and can be verified instantly, while gold supply is uncertain and requires trust in miners and refiners.</p></div>
+    <div class="qa"><strong>2. Which is easier to store securely?</strong><p>Bitcoin. You can store billions of dollars on a hardware wallet the size of a thumb drive. Gold requires vaults, guards, and insurance.</p></div>
+    <div class="qa"><strong>3. Which is easier to transport?</strong><p>Bitcoin. You can move any amount of Bitcoin across the world in minutes for a few dollars. Moving gold means armored trucks, customs forms, and huge costs.</p></div>
+    <div class="qa"><strong>4. Which is more divisible?</strong><p>Bitcoin. It can be divided into 100 million satoshis per coin. Gold can be cut, but not easily or precisely, and small pieces are impractical.</p></div>
+    <div class="qa"><strong>5. Which has a fixed supply?</strong><p>Bitcoin. The code guarantees a hard cap of 21 million coins. Gold supply keeps growing every year as new deposits are mined.</p></div>
+    <div class="qa"><strong>6. Which is easier to verify?</strong><p>Bitcoin. You can audit the entire supply yourself using open-source software. Verifying gold’s purity requires experts and expensive testing equipment.</p></div>
+    <div class="qa"><strong>7. Which performs better in the digital age?</strong><p>Bitcoin. It works natively on the internet and can be sent instantly anywhere. Gold is a physical metal built for a pre-digital economy.</p></div>
+    <div class="qa"><strong>8. Which protects you from government seizure better?</strong><p>Bitcoin. If held in self-custody, no government can confiscate it without your private keys. Gold has been seized before, including in 1933 in the United States.</p></div>
+    <div class="qa"><strong>9. Which has a predictable issuance schedule?</strong><p>Bitcoin. New coins are released every ten minutes on a known schedule that halves every four years. Gold mining fluctuates with market prices and new discoveries.</p></div>
+    <div class="qa"><strong>10. Which is harder to counterfeit?</strong><p>Bitcoin. It’s backed by cryptographic proof that cannot be faked. Gold can be counterfeited or filled with tungsten and requires testing to confirm authenticity.</p></div>
+    <div class="qa"><strong>11. Which is more scarce per person?</strong><p>Bitcoin. There will only ever be 21 million coins, meaning fewer than one for every 400 people on earth. Gold supply continues to expand every year.</p></div>
+    <div class="qa"><strong>12. Which adapts better to the modern financial system?</strong><p>Bitcoin. It integrates directly with digital wallets, payment apps, and programmable contracts. Gold sits in vaults collecting dust.</p></div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="explore-evidence" class="fade-in">
+    <h2>Explore More Research</h2>
+    <p style="text-align:center; color:#ccc; max-width:700px; margin:0 auto 40px;">
+      Dive into essays and research that expose gold’s flaws and highlight Bitcoin’s superiority.
+    </p>
+
+    <div class="evidence-links" style="text-align:center; line-height:1.8;">
+      <a href="https://unchained.com/blog/bitcoin-obsoletes-all-other-money/" target="_blank">
+        <span style="color:#f5c542;">Bitcoin Obsoletes All Other Money</span>
+        <span style="color:#f5c542;"> (Read time: 12–15 minutes)</span>
+        <span style="color:#fff;"> – Parker Lewis</span>
+      </a><br>
+
+      <a href="https://vijayboyapati.medium.com/the-bullish-case-for-bitcoin-6ecc8bdecc1" target="_blank">
+        <span style="color:#f5c542;">The Bullish Case for Bitcoin</span>
+        <span style="color:#f5c542;"> (Read time: 41 minutes)</span>
+        <span style="color:#fff;"> – Vijay Boyapati</span>
+      </a><br>
+
+      <a href="https://medium.com/the-bitcoin-times/the-greatest-game-b787ac3242b2" target="_blank">
+        <span style="color:#f5c542;">The Greatest Game</span>
+        <span style="color:#f5c542;"> (Read time: 23 minutes)</span>
+        <span style="color:#fff;"> – Jeff Booth</span>
+      </a><br>
+
+      <a href="https://www.youtube.com/watch?v=4rvTppy1qLI&list=PL2jAZ0x9H0bQFY6wIbQfnrnIlqMcSHd6X&index=1" target="_blank">
+        <span style="color:#f5c542;">What is Money? – The Saylor Series</span>
+        <span style="color:#f5c542;"> (Video Series)</span>
+        <span style="color:#fff;"> – Robert Breedlove & Michael Saylor</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Powered by <a href="https://fomo21.com" target="_blank"><img src="fomo21-logo.png" alt="FOMO21" /></a></p>
+  </footer>
+
+  <script>
+    async function updateGoldVsBTC() {
+      try {
+        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,tether-gold&vs_currencies=usd");
+        const data = await res.json();
+        const goldUsd = data["tether-gold"].usd;
+        const btcUsd = data.bitcoin.usd;
+        const goldInBTC = goldUsd / btcUsd;
+
+        document.getElementById("live-gold-usd").innerText = `$${goldUsd.toLocaleString(undefined, {maximumFractionDigits: 2})}`;
+        document.getElementById("live-btc-usd").innerText = `$${btcUsd.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+        document.getElementById("live-gold-btc").innerText = `≈ ${goldInBTC.toFixed(3)} BTC`;
+
+        const pastValues = [4738, 2.46, 0.065];
+        pastValues.forEach((v, i) => {
+          const drop = ((v - goldInBTC) / v) * 100;
+          const id = ["drop-2010", "drop-2015", "drop-2020"][i];
+          document.getElementById(id).innerText = `-${drop.toFixed(4)}%`;
+        });
+      } catch (err) {
+        console.error("Error fetching prices:", err);
+      }
+    }
+    updateGoldVsBTC();
+    setInterval(updateGoldVsBTC, 60000);
+
+    // Fade-in logic
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
