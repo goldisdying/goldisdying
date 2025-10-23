@@ -6,7 +6,6 @@
   <title>Gold is Dying</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-  <!-- SEO -->
   <meta name="description" content="For centuries, gold was trusted as the foundation of money, but it had many flaws. Bitcoin perfects this concept for the digital age with its fixed supply, borderless nature, divisibility, and verifiability." />
 
   <style>
@@ -21,18 +20,10 @@
       overflow-x: hidden;
     }
 
-    /* FADE-IN ANIMATION */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Fade-in animation */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* HEADER */
     header {
       padding: 50px 20px 10px;
     }
@@ -50,7 +41,7 @@
       max-width: 850px;
     }
 
-    /* BUTTONS */
+    /* Buttons */
     .button-container {
       display: flex;
       flex-wrap: wrap;
@@ -68,7 +59,6 @@
       border-radius: 80px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      text-align: center;
       box-shadow: 0 2px 6px rgba(255, 213, 0, 0.25);
     }
     .scroll-btn:hover {
@@ -76,7 +66,7 @@
       transform: translateY(-2px);
     }
 
-    /* CHARTS */
+    /* Chart */
     .chart-container {
       position: relative;
       width: 90%;
@@ -91,16 +81,17 @@
     }
     .chart-overlay {
       position: absolute;
-      top: 14px;
-      left: 20px;
-      color: rgba(255, 215, 0, 0.85);
-      font-size: 1.4rem;
-      font-weight: 600;
+      bottom: 14px;
+      right: 22px;
+      color: rgba(245, 197, 66, 0.78);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
       pointer-events: none;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.75);
     }
 
-    /* SECTIONS */
+    /* Sections */
     section {
       padding: 40px 20px;
       max-width: 900px;
@@ -119,7 +110,7 @@
     .qa strong { color: #f5c542; display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.15rem; }
     .qa p { color: #ccc; font-size: 1.1rem; line-height: 1.6; }
 
-    /* TABLE */
+    /* Table */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -142,7 +133,7 @@
     tr:nth-child(even) td { background-color: #151515; }
     tr.highlight td { background-color: #2a2100; }
 
-    /* LINKS */
+    /* Links */
     .evidence-links a {
       display: inline-block;
       font-size: 1.1rem;
@@ -150,7 +141,10 @@
       text-decoration: none;
       transition: color 0.2s ease, text-shadow 0.2s ease;
     }
-    .evidence-links a:hover { color: #ffd84a; text-shadow: 0 0 6px rgba(255, 216, 74, 0.5); }
+    .evidence-links a:hover {
+      color: #ffd84a;
+      text-shadow: 0 0 6px rgba(255, 216, 74, 0.5);
+    }
 
     footer {
       text-align: center;
@@ -158,7 +152,11 @@
       font-size: 0.9rem;
       padding: 40px 0;
     }
-    footer img { height: 26px; vertical-align: -6px; margin-left: 5px; }
+    footer img {
+      height: 26px;
+      vertical-align: -6px;
+      margin-left: 5px;
+    }
   </style>
 </head>
 
@@ -211,8 +209,8 @@
 
     <h3 style="text-align:center; margin-top:40px;">Gold Priced in Bitcoin (Live Chart)</h3>
     <div class="chart-container">
-      <div class="chart-overlay">goldisdying.com</div>
       <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_goldbtc&symbol=(OANDA%3AXAUUSD%2FBITSTAMP%3ABTCUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC" allowtransparency="true" scrolling="no"></iframe>
+      <div class="chart-overlay">goldisdying.com</div>
     </div>
   </section>
 
@@ -298,7 +296,6 @@
     updateGoldVsBTC();
     setInterval(updateGoldVsBTC, 60000);
 
-    // Fade-in logic
     const fadeEls = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
