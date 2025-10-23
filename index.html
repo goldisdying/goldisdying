@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gold is Dying</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- SEO -->
   <meta name="description" content="For centuries, gold was trusted as the foundation of money, but it had many flaws. Bitcoin perfects this concept for the digital age with its fixed supply, borderless nature, divisibility, and verifiability." />
 
   <style>
@@ -19,6 +21,18 @@
       overflow-x: hidden;
     }
 
+    /* FADE-IN ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HEADER */
     header {
       padding: 50px 20px 10px;
     }
@@ -36,7 +50,7 @@
       max-width: 850px;
     }
 
-    /* Buttons */
+    /* BUTTONS */
     .button-container {
       display: flex;
       flex-wrap: wrap;
@@ -54,6 +68,7 @@
       border-radius: 80px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
+      text-align: center;
       box-shadow: 0 2px 6px rgba(255, 213, 0, 0.25);
     }
     .scroll-btn:hover {
@@ -61,46 +76,31 @@
       transform: translateY(-2px);
     }
 
-    /* Chart */
-    .chart-section {
-      margin: 40px auto 0;
-      text-align: center;
-    }
-    .chart-section h2 {
-      color: #f5c542;
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-    .chart-section p {
-      color: #cfcfcf;
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-    }
+    /* CHARTS */
     .chart-container {
       position: relative;
       width: 90%;
       max-width: 1000px;
       margin: 0 auto 40px;
-      border-radius: 8px;
-      overflow: hidden;
     }
-    .chart-container iframe {
+    iframe {
       width: 100%;
       height: 600px;
       border: none;
+      border-radius: 8px;
     }
-    .chart-watermark {
+    .chart-overlay {
       position: absolute;
-      top: 12px;
-      left: 16px;
-      color: rgba(245, 197, 66, 0.9);
-      font-size: 1.05rem;
-      font-weight: 700;
+      top: 14px;
+      left: 20px;
+      color: rgba(255, 215, 0, 0.85);
+      font-size: 1.4rem;
+      font-weight: 600;
       pointer-events: none;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     }
 
-    /* Sections */
+    /* SECTIONS */
     section {
       padding: 40px 20px;
       max-width: 900px;
@@ -119,7 +119,7 @@
     .qa strong { color: #f5c542; display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.15rem; }
     .qa p { color: #ccc; font-size: 1.1rem; line-height: 1.6; }
 
-    /* Table */
+    /* TABLE */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -142,7 +142,7 @@
     tr:nth-child(even) td { background-color: #151515; }
     tr.highlight td { background-color: #2a2100; }
 
-    /* Links */
+    /* LINKS */
     .evidence-links a {
       display: inline-block;
       font-size: 1.1rem;
@@ -150,10 +150,7 @@
       text-decoration: none;
       transition: color 0.2s ease, text-shadow 0.2s ease;
     }
-    .evidence-links a:hover {
-      color: #ffd84a;
-      text-shadow: 0 0 6px rgba(255, 216, 74, 0.5);
-    }
+    .evidence-links a:hover { color: #ffd84a; text-shadow: 0 0 6px rgba(255, 216, 74, 0.5); }
 
     footer {
       text-align: center;
@@ -161,11 +158,7 @@
       font-size: 0.9rem;
       padding: 40px 0;
     }
-    footer img {
-      height: 26px;
-      vertical-align: -6px;
-      margin-left: 5px;
-    }
+    footer img { height: 26px; vertical-align: -6px; margin-left: 5px; }
   </style>
 </head>
 
@@ -192,19 +185,8 @@
     </div>
   </header>
 
-  <!-- LIVE CHART -->
-  <div class="chart-section">
-    <h2>Gold Priced in Bitcoin<br>(Live Price Chart)</h2>
-    <p>How much Bitcoin does it take to buy one ounce of gold?</p>
-
-    <div class="chart-container">
-      <div class="chart-watermark">goldisdying.com</div>
-      <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_goldbtc&symbol=BYBIT:GOLD/BTC&interval=D&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=1&saveimage=0&toolbarbg=f1f3f6&studies=[]&theme=dark&style=1&timezone=Etc%2FUTC&withdateranges=1&hidelegend=1&enable_publishing=0"></iframe>
-    </div>
-  </div>
-
   <!-- SECTION 1 -->
-  <section id="is-gold-dying">
+  <section id="is-gold-dying" class="fade-in">
     <h2>Is Gold Really Dying?</h2>
     <p>Yes — in Bitcoin terms, gold has been collapsing for more than a decade.</p>
     <p>Measured against Bitcoin, an ounce of gold has lost nearly all its value:</p>
@@ -217,19 +199,25 @@
         <th>Gold Value in BTC</th>
         <th>% Drop vs. Today</th>
       </tr>
-      <tr><td>December 31, 2010</td><td>$1,421</td><td>$0.30</td><td>≈ 4,738 BTC</td><td id="drop-2010">—</td></tr>
-      <tr><td>December 31, 2015</td><td>$1,061</td><td>$430</td><td>≈ 2.46 BTC</td><td id="drop-2015">—</td></tr>
-      <tr><td>December 31, 2020</td><td>$1,894</td><td>$29,002</td><td>≈ 0.065 BTC</td><td id="drop-2020">—</td></tr>
+      <tr><td>Dec 31 2010</td><td>$1,421</td><td>$0.30</td><td>≈ 4,738 BTC</td><td id="drop-2010">—</td></tr>
+      <tr><td>Dec 31 2015</td><td>$1,061</td><td>$430</td><td>≈ 2.46 BTC</td><td id="drop-2015">—</td></tr>
+      <tr><td>Dec 31 2020</td><td>$1,894</td><td>$29,002</td><td>≈ 0.065 BTC</td><td id="drop-2020">—</td></tr>
       <tr class="highlight"><td><strong>Today</strong></td><td id="live-gold-usd">Loading...</td><td id="live-btc-usd">Loading...</td><td id="live-gold-btc">Loading...</td><td>—</td></tr>
     </table>
 
     <p>Despite gold more than doubling in dollar terms since 2010, its value relative to Bitcoin has effectively gone to zero.</p>
     <p>In 2010, one ounce of gold could buy over 4,700 BTC. Today, it buys less than 0.04 BTC — a collapse of over 99.999%.</p>
     <p><strong>Gold may still shine in dollars, but in Bitcoin terms, it’s already dead.</strong></p>
+
+    <h3 style="text-align:center; margin-top:40px;">Gold Priced in Bitcoin (Live Chart)</h3>
+    <div class="chart-container">
+      <div class="chart-overlay">goldisdying.com</div>
+      <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_goldbtc&symbol=(OANDA%3AXAUUSD%2FBITSTAMP%3ABTCUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC" allowtransparency="true" scrolling="no"></iframe>
+    </div>
   </section>
 
   <!-- SECTION 2 -->
-  <section id="why-bitcoin-beats-gold">
+  <section id="why-bitcoin-beats-gold" class="fade-in">
     <h2>Why Bitcoin Beats Gold</h2>
 
     <div class="qa"><strong>1. Why is Bitcoin called “digital gold”?</strong><p>Because it shares gold’s scarcity and durability, but improves on it. Bitcoin’s supply is fixed at 21 million and can be verified instantly, while gold supply is uncertain and requires trust in miners and refiners.</p></div>
@@ -247,7 +235,7 @@
   </section>
 
   <!-- SECTION 3 -->
-  <section id="explore-evidence">
+  <section id="explore-evidence" class="fade-in">
     <h2>Explore More Research</h2>
     <p style="text-align:center; color:#ccc; max-width:700px; margin:0 auto 40px;">
       Dive into essays and research that expose gold’s flaws and highlight Bitcoin’s superiority.
@@ -309,6 +297,15 @@
     }
     updateGoldVsBTC();
     setInterval(updateGoldVsBTC, 60000);
+
+    // Fade-in logic
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
