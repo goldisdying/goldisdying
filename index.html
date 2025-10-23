@@ -139,13 +139,19 @@
 
     /* Evidence links */
     .evidence-links a {
-      display: block;
+      display: inline-block;
       color: #f5c542;
       font-size: 1.1rem;
       font-weight: 500;
       margin: 10px 0;
       text-decoration: none;
       transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+    .evidence-links a::after {
+      content: " ↗";
+      font-size: 1rem;
+      color: #f5c542;
+      opacity: 0.8;
     }
     .evidence-links a:hover {
       color: #ffd84a;
@@ -248,14 +254,23 @@
     </p>
     <div class="evidence-links" style="text-align:center;">
       <a href="https://unchained.com/blog/bitcoin-obsoletes-all-other-money/" target="_blank">
-        Bitcoin Obsoletes All Other Money (Read time: 12-15 minutes) – Parker Lewis
+        Bitcoin Obsoletes All Other Money (Read time: 12–15 minutes) – Parker Lewis
+      </a><br>
+      <a href="https://vijayboyapati.medium.com/the-bullish-case-for-bitcoin-6ecc8bdecc1" target="_blank">
+        The Bullish Case for Bitcoin (Read time: 41 minutes) – Vijay Boyapati
+      </a><br>
+      <a href="https://medium.com/the-bitcoin-times/the-greatest-game-b787ac3242b2" target="_blank">
+        The Greatest Game (Read time: 23 minutes) – Jeff Booth
+      </a><br>
+      <a href="https://www.youtube.com/watch?v=4rvTppy1qLI&list=PL2jAZ0x9H0bQFY6wIbQfnrnIlqMcSHd6X&index=1" target="_blank">
+        What is Money? – The Saylor Series – Robert Breedlove & Michael Saylor
       </a>
     </div>
   </section>
 
   <footer>
     <p>
-      Data via TradingView. Powered by
+      Powered by
       <a href="https://fomo21.com" target="_blank">
         <img src="fomo21-logo.png" alt="FOMO21 Logo" />
       </a>
