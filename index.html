@@ -20,10 +20,6 @@
       overflow-x: hidden;
     }
 
-    /* Fade-in animation */
-    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
     header {
       padding: 50px 20px 10px;
     }
@@ -81,14 +77,31 @@
     }
     .chart-overlay {
       position: absolute;
-      bottom: 14px;
-      right: 22px;
+      top: 14px;
+      left: 20px;
       color: rgba(245, 197, 66, 0.78);
       font-size: 1.25rem;
       font-weight: 700;
       letter-spacing: 0.6px;
       pointer-events: none;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.75);
+    }
+
+    /* Table watermark */
+    .table-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    .table-watermark {
+      position: absolute;
+      bottom: 10px;
+      right: 16px;
+      color: rgba(245, 197, 66, 0.75);
+      font-size: 1.1rem;
+      font-weight: 700;
+      pointer-events: none;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     }
 
     /* Sections */
@@ -184,38 +197,35 @@
   </header>
 
   <!-- SECTION 1 -->
-  <section id="is-gold-dying" class="fade-in">
+  <section id="is-gold-dying">
     <h2>Is Gold Really Dying?</h2>
     <p>Yes — in Bitcoin terms, gold has been collapsing for more than a decade.</p>
     <p>Measured against Bitcoin, an ounce of gold has lost nearly all its value:</p>
 
-    <table id="goldTable">
-      <tr>
-        <th>Period</th>
-        <th>Gold Price (USD/oz)</th>
-        <th>Bitcoin Price (USD)</th>
-        <th>Gold Value in BTC</th>
-        <th>% Drop vs. Today</th>
-      </tr>
-      <tr><td>Dec 31 2010</td><td>$1,421</td><td>$0.30</td><td>≈ 4,738 BTC</td><td id="drop-2010">—</td></tr>
-      <tr><td>Dec 31 2015</td><td>$1,061</td><td>$430</td><td>≈ 2.46 BTC</td><td id="drop-2015">—</td></tr>
-      <tr><td>Dec 31 2020</td><td>$1,894</td><td>$29,002</td><td>≈ 0.065 BTC</td><td id="drop-2020">—</td></tr>
-      <tr class="highlight"><td><strong>Today</strong></td><td id="live-gold-usd">Loading...</td><td id="live-btc-usd">Loading...</td><td id="live-gold-btc">Loading...</td><td>—</td></tr>
-    </table>
+    <div class="table-container">
+      <table id="goldTable">
+        <tr>
+          <th>Period</th>
+          <th>Gold Price (USD/oz)</th>
+          <th>Bitcoin Price (USD)</th>
+          <th>Gold Value in BTC</th>
+          <th>% Drop vs. Today</th>
+        </tr>
+        <tr><td>Dec 31 2010</td><td>$1,421</td><td>$0.30</td><td>≈ 4,738 BTC</td><td id="drop-2010">—</td></tr>
+        <tr><td>Dec 31 2015</td><td>$1,061</td><td>$430</td><td>≈ 2.46 BTC</td><td id="drop-2015">—</td></tr>
+        <tr><td>Dec 31 2020</td><td>$1,894</td><td>$29,002</td><td>≈ 0.065 BTC</td><td id="drop-2020">—</td></tr>
+        <tr class="highlight"><td><strong>Today</strong></td><td id="live-gold-usd">Loading...</td><td id="live-btc-usd">Loading...</td><td id="live-gold-btc">Loading...</td><td>—</td></tr>
+      </table>
+      <div class="table-watermark">goldisdying.com</div>
+    </div>
 
     <p>Despite gold more than doubling in dollar terms since 2010, its value relative to Bitcoin has effectively gone to zero.</p>
     <p>In 2010, one ounce of gold could buy over 4,700 BTC. Today, it buys less than 0.04 BTC — a collapse of over 99.999%.</p>
     <p><strong>Gold may still shine in dollars, but in Bitcoin terms, it’s already dead.</strong></p>
-
-    <h3 style="text-align:center; margin-top:40px;">Gold Priced in Bitcoin (Live Chart)</h3>
-    <div class="chart-container">
-      <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_goldbtc&symbol=(OANDA%3AXAUUSD%2FBITSTAMP%3ABTCUSD)&interval=W&theme=dark&style=2&hide_top_toolbar=1&hide_legend=1&save_image=0&timezone=Etc%2FUTC" allowtransparency="true" scrolling="no"></iframe>
-      <div class="chart-overlay">goldisdying.com</div>
-    </div>
   </section>
 
   <!-- SECTION 2 -->
-  <section id="why-bitcoin-beats-gold" class="fade-in">
+  <section id="why-bitcoin-beats-gold">
     <h2>Why Bitcoin Beats Gold</h2>
 
     <div class="qa"><strong>1. Why is Bitcoin called “digital gold”?</strong><p>Because it shares gold’s scarcity and durability, but improves on it. Bitcoin’s supply is fixed at 21 million and can be verified instantly, while gold supply is uncertain and requires trust in miners and refiners.</p></div>
@@ -233,7 +243,7 @@
   </section>
 
   <!-- SECTION 3 -->
-  <section id="explore-evidence" class="fade-in">
+  <section id="explore-evidence">
     <h2>Explore More Research</h2>
     <p style="text-align:center; color:#ccc; max-width:700px; margin:0 auto 40px;">
       Dive into essays and research that expose gold’s flaws and highlight Bitcoin’s superiority.
@@ -295,14 +305,6 @@
     }
     updateGoldVsBTC();
     setInterval(updateGoldVsBTC, 60000);
-
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
-    fadeEls.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
